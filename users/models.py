@@ -8,7 +8,7 @@ class User(AbstractUser):
     username = None
 
     email = models.EmailField(unique=True, verbose_name="Email", max_length=255)
-    name = models.CharField(max_length=100, verbose_name="Имя")
+    name = models.CharField(max_length=100, verbose_name="Имя")  # может убрать, так как есть first_name внутри
     phone_number = models.CharField(max_length=20, verbose_name="Номер телефона", **NULLABLE)
     city = models.CharField(max_length=25, verbose_name="Город", **NULLABLE)
     enterprise = models.CharField(max_length=100, verbose_name="Предприятие", **NULLABLE)

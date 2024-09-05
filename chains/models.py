@@ -23,6 +23,9 @@ class Manufacturer(models.Model):
         verbose_name = "Производитель"
         verbose_name_plural = "Производители"
 
+    def __str__(self):
+        return self.name
+
 
 class Product(models.Model):
     name = models.CharField(max_length=100, verbose_name='Название продукта')
@@ -35,3 +38,6 @@ class Product(models.Model):
     class Meta:
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
+
+    def __str__(self):
+        return self.name

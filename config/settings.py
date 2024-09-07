@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # setting_apps
     'rest_framework',
     'rest_framework_simplejwt',
+    'django_filters',
     # my_apps
     'users',
     'chains',

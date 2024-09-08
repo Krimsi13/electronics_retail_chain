@@ -12,5 +12,4 @@ class UserSerializer(serializers.ModelSerializer):
 class UserCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('email', 'first_name', 'last_name', 'password') # Наверно этот вариант, и из модели убрать name
-        # fields = ('email', 'name', 'last_name', 'password')
+        fields = ('email', 'first_name', 'last_name', 'password')

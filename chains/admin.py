@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import reverse
-from django.utils.safestring import mark_safe
+# from django.utils.safestring import mark_safe (не понадобилось)
+from django.utils.html import format_html
 
 from chains.models import Manufacturer, Product
 
@@ -13,9 +14,18 @@ class ManufacturerAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'supplier_link',)
     list_select_related = True
 
+    # Вариант 1(плохой)
+    # def supplier_link(self, obj):
+    #     """Ссылка на Поставщика"""
+    #     if obj.supplier:
+    #         if obj.supplier:
+    #             return f'<a href="/admin/chains/manufacturer/{obj.supplier.id}/change/">{obj.supplier.name}</a>'
+    # Вариант 2
     def supplier_link(self, obj):
         """Ссылка на Поставщика"""
-        pass
+        if obj.supplier:
+            link = reverse("admin:chains_manufacturer_change", args=[obj.supplier.id])
+            return format_html('<a href="{}">{}</a>', link, obj.supplier)
 
     supplier_link.allow_tags = True
     supplier_link.short_description = "Cсылка на поставщика"

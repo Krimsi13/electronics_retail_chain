@@ -10,12 +10,11 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 class ManufacturerSerializer(serializers.ModelSerializer):
-
-    products = ProductSerializer(many=True, read_only=True)
+    product = ProductSerializer(many=True, read_only=True)
 
     class Meta:
         model = Manufacturer
-        fields = ('id', 'name', 'email', 'country', 'city', 'street', 'house_number', 'products', 'supplier', 'debt',
+        fields = ('id', 'name', 'email', 'country', 'city', 'street', 'house_number', 'product', 'supplier', 'debt',
                   'creation_time')
 
         read_only_fields = ('debt',)

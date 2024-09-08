@@ -15,7 +15,8 @@ class Manufacturer(models.Model):
 
     supplier = models.ForeignKey("self", on_delete=models.SET_NULL, **NULLABLE, verbose_name='Поставщик')
 
-    debt = models.DecimalField(max_digits=20, decimal_places=2, verbose_name="Задолженность перед поставщиком")
+    debt = models.DecimalField(max_digits=20, decimal_places=2, verbose_name="Задолженность перед поставщиком",
+                               default=0.00)
 
     creation_time = models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
 

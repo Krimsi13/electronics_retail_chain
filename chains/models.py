@@ -4,6 +4,14 @@ NULLABLE = {"null": True, "blank": True}
 
 
 class Manufacturer(models.Model):
+    """Модель производителя."""
+
+    MANUFACTURER_TYPE = (
+        ('factory', 'Завод'),
+        ('retail network', 'Розничная сеть'),
+        ('sole proprietor', 'Индивидуальный предприниматель'),
+    )
+
     name = models.CharField(max_length=100, verbose_name="Название производителя")
 
     # contacts
@@ -19,6 +27,8 @@ class Manufacturer(models.Model):
                                default=0.00)
 
     creation_time = models.DateTimeField(auto_now_add=True, verbose_name="Время создания")
+
+    type = models.CharField(max_length=100, verbose_name='Тип производителя', choices=MANUFACTURER_TYPE, **NULLABLE)
 
     # Уровень звена от 0 до 2
     def get_level_chains(self):
@@ -38,6 +48,7 @@ class Manufacturer(models.Model):
 
 
 class Product(models.Model):
+    """Модель продукта"""
     name = models.CharField(max_length=100, verbose_name="Название продукта")
     product_model = models.CharField(max_length=100, verbose_name="Модель продукта")
     release_date = models.DateField(verbose_name="Дата выхода продукта на рынок")

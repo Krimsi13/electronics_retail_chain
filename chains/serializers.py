@@ -16,6 +16,6 @@ class ManufacturerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Manufacturer
         fields = ('id', 'name', 'email', 'country', 'city', 'street', 'house_number', 'product', 'supplier', 'debt',
-                  'creation_time', 'level_chains')
+                  'creation_time', 'type', 'level_chains')
 
         read_only_fields = ('debt',)

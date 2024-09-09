@@ -9,7 +9,7 @@ from chains.models import Manufacturer, Product
 @admin.register(Manufacturer)
 class ManufacturerAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'email', 'country', 'city', 'street', 'house_number', 'supplier', 'debt',
-                    'creation_time', 'supplier_link',)
+                    'creation_time', 'type', 'supplier_link',)
     list_filter = ('city',)
     list_display_links = ('id', 'supplier_link',)
     list_select_related = True
@@ -34,6 +34,7 @@ class ManufacturerAdmin(admin.ModelAdmin):
 
     @admin.action(description='Mark selected manufacturer for clear debt')
     def clear_debt(self, request, queryset):
+        """Очистить значение задолженности перед поставщиком."""
         queryset.update(debt=0.00)
 
 
